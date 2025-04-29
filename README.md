@@ -30,8 +30,10 @@ pip install pillow requests
 
 Before running, edit Steam_Ban_GUI_V3.py and replace:
 
+```
 api_key = "YOUR_API_KEY"
 appid = "GAME_APPID"
+```
 with your API key and app ID, then you'll be able to run it with:
 
 python Steam_Ban_GUI_V3.py
