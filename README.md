@@ -1,34 +1,83 @@
-# Steam-Publisher-API-Banning
-This repository uses the Steamworks "ICheatReportingService Interface" to assist you in banning a user from your game.
+# Steam_Ban_GUI
 
-## Getting your Steamworks API Key
-1) Login to your account on the [Steam Partner Page](https://partner.steamgames.com/)
-2) Click on "Users & Permissions" and select "Manage Groups"
-3) Click on "Everyone"
-4) On the right side, there will be a "Create WebAPI Key" button, press it and you'll get it. Keep it safe and do not share it with anyone.
+A graphical tool to interface with the Steam Banning API — this upgraded fork of [KillaBoi's Steam Banning API](https://github.com/KillaBoi/Steam-Banning-API) introduces a full-featured GUI using Python's `tkinter` and `Pillow`. Easily fetch player information, issue bans, or revoke them, all from a *modern* visual interface.
 
-**NOTE: Your "Everyone" group must have the application added to the group itself, if it is not then only the owner of the original appid can create a new group and add the application to it.**
-<br>
-*(thanks to [zoox](https://x.com/Zo0x_) for the information whilst testing support for [Bodycam](https://store.steampowered.com/app/2406770/Bodycam/))*
+## 🧰 Features
 
-## How to use this script
-__**MAKE SURE YOU HAVE PYTHON AND REQUESTS MODULES INSTALLED**__ (`pip install requests`)
-<br><br>__**!!!! MAKE SURE YOU HAVE ENABLED THE ANTI-CHEAT SERVICE FROM THE STEAMWORKS PARTNER PORTAL (you can set provider as none) !!!!**__
-1) [Download it](https://raw.githubusercontent.com/KillaBoi/Steam-Banning-API/master/SteamGameBanAPI.py)
-2) Run it and follow the instructions.
+- 🔍 Retrieve Steam user information via SteamID64 or profile URL  
+- 🚫 Ban players (temporary or permanent) with optional cheat descriptions  
+- ✅ Unban players via a single click  
+- 📊 View ban history (VAC, Game, Economy, Last Ban)  
+- 🪟 Simple, clean GUI with background theming  
+- 🧾 Built-in logging area for all actions and responses
+- 🌄 Modular background (although, a dark one will work better 👀)   
 
-## Games known to have used this script (thank you so much <3):
-*Just because the game is listed here does not mean they will give you the ban so please respect the developers of the games)*
+## 🛠 Requirements
 
-1) [Banana Shooter](https://store.steampowered.com/app/1949740/Banana_Shooter/)
-2) [Tanks: The Crusades](https://store.steampowered.com/app/1660910/Tanks_The_Crusades/)
-3) [A Shawn Story](https://store.steampowered.com/app/714360/A_Shawn_Story/)
-4) [EXIT 2](https://store.steampowered.com/app/1816880/EXIT_2/)
-5) [Treason](https://store.steampowered.com/app/1786950/Treason/)
-6) [Master Arena](https://store.steampowered.com/app/704020/Master_Arena/)
-7) [Warfork](https://store.steampowered.com/app/671610/Warfork/)
-8) [Down To One](https://store.steampowered.com/app/334040/Down_To_One/)
-9) [BlastFort](https://store.steampowered.com/app/1682790/BlastFort/)
-10) [Deep the Game](https://store.steampowered.com/app/1046470/Deep_the_Game/)
-11) [BlasterBeat](https://store.steampowered.com/app/1575680/BlasterBeat/)
-12) [Bodycam](https://store.steampowered.com/app/2406770/Bodycam/)
+- Python 3.8 or newer  
+- A valid [Steam Web API Key](https://steamcommunity.com/dev/apikey)  
+- Your game’s `AppID`  
+
+## 📦 Dependencies
+
+Install the required packages via pip:
+
+```
+pip install pillow requests
+```
+
+## 📷 Screenshot
+![image](https://github.com/user-attachments/assets/82ef60ef-7442-4d7f-b356-1f5a611329bd)
+
+
+## 🚀 Setup
+
+Before running, edit Steam_Ban_GUI_V3.py and replace:
+
+api_key = "YOUR_API_KEY"
+appid = "GAME_APPID"
+with your API key and app ID, then you'll be able to run it with:
+
+python Steam_Ban_GUI_V3.py
+
+## 🏗 Build Instructions (Windows Executable)
+
+To build a standalone .exe using PyInstaller, use the following command:
+
+### for windows🪟 :
+
+```
+pyinstaller --onefile --windowed \
+    --hidden-import=PIL \
+    --hidden-import=PIL._tkinter_finder \
+    --hidden-import=tkinter \
+    --hidden-import=PIL.Image \
+    --hidden-import=PIL.ImageTk \
+    --add-data "background.png;." \
+    --icon=BAN.ico \
+    Steam_Ban_GUI_V3.py
+```
+
+### for linux 🐧:
+```
+pyinstaller --onefile --windowed \
+    --hidden-import=PIL \
+    --hidden-import=PIL._tkinter_finder \
+    --hidden-import=tkinter \
+    --hidden-import=PIL.Image \
+    --hidden-import=PIL.ImageTk \
+    --add-data "background.png:." \
+    --icon=BAN.ico \
+    Steam_Ban_GUI_V3.py
+```
+
+This will create a standalone .exe inside the dist/ folder.
+Note: Make sure background.png and BAN.ico are located in the same directory as the script during the build process.
+
+## 📄 License
+
+This project is distributed under the original license from KillaBoi’s Steam-Banning-API. If you fork or distribute, please maintain credit to the original author.
+
+## 🙋‍♂️ Disclaimer
+
+This tool is intended for developers or administrators of games integrated with Steam's partner API. Abuse of the banning system may violate Steamworks terms.
