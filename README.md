@@ -26,10 +26,6 @@ Install the required packages via pip:
 pip install pillow requests
 ```
 
-## 📷 Screenshot
-![image](https://github.com/user-attachments/assets/82ef60ef-7442-4d7f-b356-1f5a611329bd)
-
-
 ## 🚀 Setup
 
 Before running, edit Steam_Ban_GUI_V3.py and replace:
